@@ -1,0 +1,240 @@
+
+args/action.cpp,394
+mazer2016sp1oua::args::generate_action::do_action(mazer2016sp1oua::data::maze& m)do_action18,422
+mazer2016sp1oua::args::save_action::do_action(mazer2016sp1oua::data::maze &m)do_action45,1168
+mazer2016sp1oua::args::load_action::do_action(mazer2016sp1oua::data::maze & m)do_action88,2379
+mazer2016sp1oua::args::pathfind_action::do_action(mazer2016sp1oua::data::maze & m)do_action102,2720
+
+args/action.h,1932
+namespace mazer2016sp1ouamazer2016sp1oua7,127
+    namespace datadata9,155
+    namespace argsargs16,302
+		enum generator_typegenerator_type18,327
+			BTREE,BTREE20,353
+			WILSON,WILSON21,363
+			SIDEWINDERSIDEWINDER22,374
+        class actionaction28,537
+		class action_failed : public std::exceptionaction_failed45,1117
+			std::string _message;_message50,1231
+			action_failed(const std::string message)action_failed56,1329
+			const char * what(void)what64,1554
+        class generate_action : public actiongenerate_action74,1714
+			generator_type gen_type;gen_type76,1770
+            int _seed;_seed82,1992
+            unsigned _width;_width87,2098
+            unsigned _height;_height92,2211
+            generate_action(void){}generate_action100,2399
+            generate_action(unsigned width,unsigned height, generator_type gen_type)generate_action106,2569
+            generate_action(int seed, unsigned width, unsigned height, generate_action119,3043
+            generate_action(int seed) :generate_action135,3571
+		enum class pathfind_type {pathfind_type146,3858
+			DIJKSTRA,DIJKSTRA147,3887
+			BREADTH_FIRST_SEARCH,BREADTH_FIRST_SEARCH148,3900
+			A_STAR_MANHATTAN,A_STAR_MANHATTAN149,3925
+		class pathfind_action : public actionpathfind_action156,4048
+			pathfind_type _type;_type161,4153
+			pathfind_action(pathfind_type type)pathfind_action167,4281
+        class load_action : public actionload_action177,4493
+            std::string _name;_name182,4637
+            load_action(const std::string & name) : _name(name)load_action188,4835
+        enum class save_typesave_type199,5081
+            BINARY, BINARY202,5159
+        class save_action : public actionsave_action210,5334
+            save_type _type;_type215,5464
+            std::string _name;_name220,5574
+            save_action(save_type type, const std::string & name) save_action227,5760
+
+args/arg_processor.cpp,609
+const std::string mazer2016sp1oua::args::arg_processor::arg_stringsarg_strings4,108
+mazer2016sp1oua::args::arg_processor::arg_processor( int argc, char*argv[])arg_processor15,442
+mazer2016sp1oua::args::arg_processor::process(void)process29,795
+    std::string mazer2016sp1oua::args::option_stringoption_string202,7906
+int mazer2016sp1oua::args::arg_processor::find_next_option(find_next_option247,9211
+bool mazer2016sp1oua::args::arg_processor::valid_dim(int val)valid_dim269,9953
+mazer2016sp1oua::args::arg_processor::process_generate_argument(int& arg_count,process_generate_argument283,10325
+
+args/arg_processor.h,1266
+namespace mazer2016sp1ouamazer2016sp1oua12,247
+    namespace argsargs17,351
+        enum class option_type option_type23,535
+			GENBTREE,GENBTREE31,750
+			GENWILSON,GENWILSON32,763
+			GENSIDEWINDER,GENSIDEWINDER33,777
+			SOLVE_DIJKSTRA,SOLVE_DIJKSTRA35,796
+			SOLVE_BFS,SOLVE_BFS36,815
+			SOLVE_A_MANHATTAN,SOLVE_A_MANHATTAN37,829
+			SOLVE_A_EUCLIDE,SOLVE_A_EUCLIDE38,851
+            SAVE_VECTOR, SAVE_VECTOR42,929
+            SAVE_BINARY, SAVE_BINARY44,1013
+        enum class generate_typegenerate_type53,1292
+            DEFAULT, DEFAULT56,1372
+            NODIMS, NODIMS58,1430
+            NOSEED, NOSEED60,1498
+            ALLSPEC, ALLSPEC62,1569
+        class arg_processorarg_processor72,1902
+                < mazer2016sp1oua::args::action > > actions;actions82,2330
+            std::vector < std::string > arguments;arguments86,2491
+            static const int MINDIM=4;MINDIM95,2862
+            static const int MAXDIM=5000;MAXDIM97,2948
+            static const int EXTLEN=4;EXTLEN99,3046
+            static const int ONE_ARGUMENT=1;ONE_ARGUMENT102,3215
+            static const int NUM_OPTIONS = 10;NUM_OPTIONS108,3384
+            static const std::string arg_strings[NUM_OPTIONS];arg_strings112,3534
+
+constants/constants.h,591
+namespace mazer2016sp1ouamazer2016sp1oua10,278
+    namespace constantsconstants15,384
+        const int ERROR = -1;ERROR21,531
+        const int NOSEED = 2;NOSEED26,704
+		const unsigned long long INF = INT_MAX;INF29,783
+		const int OFFSET_X = 50;OFFSET_X31,873
+		const int OFFSET_Y = 50;OFFSET_Y33,954
+		const int PATH_COST = 10;PATH_COST35,1032
+        const unsigned DEFAULT_WIDTH = 10;DEFAULT_WIDTH39,1125
+        const unsigned DEFAULT_HEIGHT = 10;DEFAULT_HEIGHT44,1231
+        const int MIN_DIM = 2;MIN_DIM49,1346
+        const int MAX_DIM = 5000;MAX_DIM54,1448
+
+data/maze.cpp,1777
+void mazer2016sp1oua::data::maze::init(void)init3,19
+std::string mazer2016sp1oua::data::dir_to_str(mazer2016sp1oua::data::direction d) {dir_to_str8,94
+const mazer2016sp1oua::data::direction mazer2016sp1oua::data::operator!(operator !33,657
+bool mazer2016sp1oua::data::maze::save_binary(const std::string& name)save_binary65,1571
+bool mazer2016sp1oua::data::maze::load_binary(const std::string& name)load_binary153,4799
+bool mazer2016sp1oua::data::maze::valid_edge(const edge& e) constvalid_edge256,8510
+bool mazer2016sp1oua::data::maze::save_svg(const std::string& name) save_svg277,9149
+void mazer2016sp1oua::data::maze::set_unvisited(void)set_unvisited353,11629
+int mazer2016sp1oua::data::maze::edge_count(void)edge_count370,12087
+mazer2016sp1oua::data::direction mazer2016sp1oua::data::get_dir(const int in_x, get_dir403,13129
+void mazer2016sp1oua::data::maze::save_svg_prologue(std::ofstream& out, save_svg_prologue448,14525
+void mazer2016sp1oua::data::maze::save_svg_epilogue(std::ofstream& out)save_svg_epilogue461,15023
+void mazer2016sp1oua::data::maze::save_svg_edge(std::ofstream & out, save_svg_edge475,15779
+void mazer2016sp1oua::data::maze::save_svg_background(std::ofstream & out, save_svg_background503,16812
+void mazer2016sp1oua::data::maze::set_visited(edge& e, int e_index)set_visited520,17433
+bool mazer2016sp1oua::data::maze::valid_dim(const int dim)valid_dim537,17912
+mazer2016sp1oua::data::operator!(const mazer2016sp1oua::data::edge& e)operator !552,18269
+mazer2016sp1oua::data::operator !( operator !568,18705
+mazer2016sp1oua::data::operator<<(operator <<577,18920
+void mazer2016sp1oua::data::maze::clear(void)clear585,19174
+std::ostream& mazer2016sp1oua::data::operator<<(std::ostream& out,operator <<600,19463
+
+data/maze.h,2994
+namespace mazer2016sp1ouamazer2016sp1oua12,220
+    namespace datadata19,433
+        enum orientationorientation25,624
+            HORIZONTAL, HORIZONTAL28,718
+            VERTICALVERTICAL30,799
+        const int NUM_ORIENTATIONS = 2;NUM_ORIENTATIONS42,1162
+        enum class directiondirection48,1376
+            NORTH, NORTH53,1509
+            SOUTH, SOUTH57,1622
+            EAST, EAST61,1744
+            WEST, WEST65,1866
+		struct point {point72,2006
+			int x, y;x73,2024
+			int x, y;y73,2024
+			direction dir;dir74,2038
+			point(int x, int y, direction dir = direction::INVALID) : x(x), y(y), dir(dir) { }point77,2061
+			bool operator != (const point &rhs) {operator !=80,2155
+			bool operator == (const point &rhs) {operator ==83,2241
+			friend std::ostream & operator << (std::ostream &os, const point &rhs) {operator <<86,2327
+		struct point_predicate_by_coords {point_predicate_by_coords93,2532
+			point p;p94,2570
+			point_predicate_by_coords(point p) : p(p) { }point_predicate_by_coords95,2583
+			bool operator () (const point &rhs) {operator ()97,2635
+		struct point_predicate_full {point_predicate_full102,2757
+			point p;p103,2790
+			point_predicate_full(point p) : p(p) { }point_predicate_full104,2803
+			bool operator () (const point &rhs) {operator ()106,2850
+        const int num_dirs = 4;num_dirs120,3246
+        struct edgeedge139,4067
+            int in_x, in_x142,4139
+                in_y, in_y144,4207
+                out_x, out_x146,4287
+                out_y;out_y148,4368
+            bool visited;visited150,4468
+			edge(void)edge156,4719
+            edge(int x1, int y1, int x2, int y2) edge167,5060
+        struct cellcell186,5637
+            int xx189,5722
+                , y;y191,5785
+            std::vector <edge> adjacents;adjacents193,5867
+			long g_cost;g_cost196,5948
+			double h_cost;h_cost197,5965
+			double f_cost;f_cost198,5984
+			struct cell * parent;parent199,6003
+			bool closed;closed200,6029
+			cell(void) : x(constants::ERROR), y(constants::ERROR),cell207,6259
+            cell(int _x, int _y) : x(_x), y(_y), cell219,6628
+        class mazemaze232,6957
+            int _width, _width235,7026
+                _height;_height237,7095
+            std::vector < std::vector < cell > > _cells;_cells239,7199
+            bool _initialized;_initialized241,7305
+            constexpr static const double MAXRES=500;MAXRES247,7621
+            maze(void) maze258,8014
+			std::vector<edge> path;path262,8142
+            maze ( int width, int height ) maze271,8506
+            bool initialized(void)initialized285,9092
+            std::vector<std::vector<cell>> & get_cells(void) get_cells299,9726
+            int height() constheight308,9978
+            void height(const int h)height319,10361
+            int width() constwidth332,10791
+            void width( const int w )width342,11080
+	    maze(const maze & m)maze423,13665
+
+generators/generator.cpp,237
+void mazer2016sp1oua::generators::binary_gen::generate(void)generate7,151
+void mazer2016sp1oua::generators::wilson_gen::generate(void)generate87,2753
+void mazer2016sp1oua::generators::sidewinder_gen::generate(void)generate233,8476
+
+generators/generator.h,965
+namespace mazer2016sp1ouamazer2016sp1oua12,211
+    namespace generatorsgenerators17,372
+		enum class generator_dirgenerator_dir22,498
+			DOWN, RIGHT, UP, LEFTDOWN24,531
+			DOWN, RIGHT, UP, LEFTRIGHT24,531
+			DOWN, RIGHT, UP, LEFTUP24,531
+		enum class move_right_downmove_right_down27,565
+			RIGHT, DOWNRIGHT29,600
+		class generator {generator32,624
+			data::maze & mymaze;mymaze35,731
+			std::mt19937 rnd_gen;rnd_gen37,790
+			generator(data::maze& m, int _width, int _height, int _seed)generator39,827
+		class binary_gen : public generatorbinary_gen57,1243
+			binary_gen(data::maze& m, int _width, int _height, int _seed)binary_gen60,1298
+		class wilson_gen : public generatorwilson_gen71,1592
+			wilson_gen(data::maze& m, int _width, int _height, int _seed)wilson_gen74,1647
+		class sidewinder_gen : public generatorsidewinder_gen84,1951
+			sidewinder_gen(data::maze& m, int _width, int _height, int _seed)sidewinder_gen87,2010
+
+main.cpp,127
+const int NOARGS = 1;NOARGS19,474
+int main(int argc, char** argv)main26,593
+void display_usage(void)display_usage73,2013
+
+Makefile,255
+OBJECTS=data/maze.o generators/generator.o main.o args/action.o \OBJECTS10,416
+HEADERS=data/maze.h pathfind/pathfind.h generators/recursivegen.h args/action.h \HEADERS13,545
+CXXFLAGS=-Wall -pedantic -std=c++14CXXFLAGS16,706
+LFLAGS=-pgLFLAGS17,742
+
+pathfind/pathfind.cpp,231
+void mazer2016sp1oua::pathfinders::dijkstra_solver::solve(void) {solve5,53
+void mazer2016sp1oua::pathfinders::bfs_solver::solve(void) {solve65,1784
+void mazer2016sp1oua::pathfinders::a_star_solver::solve(void) {solve128,4296
+
+pathfind/pathfind.h,757
+namespace mazer2016sp1ouamazer2016sp1oua14,242
+	namespace pathfinderspathfinders19,400
+		class maze_sover {maze_sover22,430
+			data::maze & mymaze;mymaze25,538
+			maze_sover(data::maze& m) : mymaze(m) {}maze_sover27,574
+		class dijkstra_solver : public maze_soverdijkstra_solver35,742
+			dijkstra_solver(data::maze& m)dijkstra_solver38,803
+		class bfs_solver : public maze_soverbfs_solver49,1047
+			bfs_solver(data::maze& m)bfs_solver52,1103
+		typedef double (*pHeuristic)(int start_x, int start_y, int end_x, int end_y);pHeuristic65,1406
+		class a_star_solver : public maze_sovera_star_solver67,1489
+			pHeuristic heuristic_func;heuristic_func69,1537
+			a_star_solver(data::maze& m, pHeuristic heuristic_func)a_star_solver72,1628

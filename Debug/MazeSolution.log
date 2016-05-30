@@ -1,0 +1,24 @@
+﻿  pathfind.cpp
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(112): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(128): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  main.cpp
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(112): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(128): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  generator.cpp
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(112): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(128): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  maze.cpp
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(112): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(128): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  arg_processor.cpp
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(112): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(128): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\arg_processor.cpp(195): warning C4018: '<': signed/unsigned mismatch
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\arg_processor.cpp(319): warning C4101: 'inval': unreferenced local variable
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\arg_processor.cpp(343): warning C4101: 'inval': unreferenced local variable
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\arg_processor.cpp(376): warning C4101: 'inval': unreferenced local variable
+  action.cpp
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(112): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\globalfreelance\may\#135788----\mazesolution\mazesolution\args\action.h(128): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  Generating Code...
+  MazeSolution.vcxproj -> D:\globalfreelance\May\#135788----\MazeSolution\Debug\MazeSolution.exe
